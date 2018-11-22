@@ -1,15 +1,13 @@
 const int max_step = 4e5;
 
 unsigned long long gcd(unsigned long long a, unsigned long long b){
-    if (a == 0)
-        return 1;
-    while (a)
-        swap(a, b%=a);
+    if (!a) return 1;
+    while (a) swap(a, b%=a);
     return b;
 }
 
 unsigned long long get(unsigned long long a, unsigned long long b){
-    if (a>b)
+    if (a > b)
         return a-b;
     else
         return b-a;

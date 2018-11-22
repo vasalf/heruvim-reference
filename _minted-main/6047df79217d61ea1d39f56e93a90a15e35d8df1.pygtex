@@ -1,0 +1,50 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{fill}\PYG{p}{(}\PYG{n}{par}\PYG{p}{,} \PYG{n}{par} \PYG{o}{+} \PYG{l+m+mi}{301}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{n}{fill}\PYG{p}{(}\PYG{n}{par2}\PYG{p}{,} \PYG{n}{par2} \PYG{o}{+} \PYG{l+m+mi}{301}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{);}
+
+\PYG{k+kt}{int} \PYG{n}{ans} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{v} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{v} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{n}{v}\PYG{o}{++}\PYG{p}{)\PYGZob{}}
+    \PYG{n}{memset}\PYG{p}{(}\PYG{n}{useda}\PYG{p}{,} \PYG{n+nb}{false}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{useda}\PYG{p}{));}
+    \PYG{n}{memset}\PYG{p}{(}\PYG{n}{usedb}\PYG{p}{,} \PYG{n+nb}{false}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{usedb}\PYG{p}{));}
+    \PYG{n}{useda}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb}{true}\PYG{p}{;}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+        \PYG{n}{w}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{make\PYGZus{}pair}\PYG{p}{(}\PYG{n}{a}\PYG{p}{[}\PYG{n}{v}\PYG{p}{][}\PYG{n}{i}\PYG{p}{]} \PYG{o}{+} \PYG{n}{row}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{+} \PYG{n}{col}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],} \PYG{n}{v}\PYG{p}{);}
+    \PYG{n}{memset}\PYG{p}{(}\PYG{n}{prev}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{prev}\PYG{p}{));}
+    \PYG{k+kt}{int} \PYG{n}{pos}\PYG{p}{;}
+    \PYG{k}{while} \PYG{p}{(}\PYG{n+nb}{true}\PYG{p}{)\PYGZob{}}
+        \PYG{n}{pair}\PYG{o}{\PYGZlt{}}\PYG{n}{pair}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{p}{,} \PYG{k+kt}{int}\PYG{o}{\PYGZgt{}}\PYG{p}{,} \PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{p} \PYG{o}{=} \PYG{n}{make\PYGZus{}pair}\PYG{p}{(}\PYG{n}{make\PYGZus{}pair}\PYG{p}{(}\PYG{l+m+mf}{1e9}\PYG{p}{,} \PYG{l+m+mf}{1e9}\PYG{p}{),} \PYG{l+m+mf}{1e9}\PYG{p}{);}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+            \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{usedb}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])}
+                \PYG{n}{p} \PYG{o}{=} \PYG{n}{min}\PYG{p}{(}\PYG{n}{p}\PYG{p}{,} \PYG{n}{make\PYGZus{}pair}\PYG{p}{(}\PYG{n}{w}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],} \PYG{n}{i}\PYG{p}{));}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+            \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{useda}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])}
+                \PYG{n}{row}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{+=} \PYG{n}{p}\PYG{p}{.}\PYG{n}{first}\PYG{p}{.}\PYG{n}{first}\PYG{p}{;}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+            \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{usedb}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])\PYGZob{}}
+                \PYG{n}{col}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZhy{}=} \PYG{n}{p}\PYG{p}{.}\PYG{n}{first}\PYG{p}{.}\PYG{n}{first}\PYG{p}{;}
+                \PYG{n}{w}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{first} \PYG{o}{\PYGZhy{}=} \PYG{n}{p}\PYG{p}{.}\PYG{n}{first}\PYG{p}{.}\PYG{n}{first}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}
+        \PYG{n}{ans} \PYG{o}{+=} \PYG{n}{p}\PYG{p}{.}\PYG{n}{first}\PYG{p}{.}\PYG{n}{first}\PYG{p}{;}
+        \PYG{n}{usedb}\PYG{p}{[}\PYG{n}{p}\PYG{p}{.}\PYG{n}{second}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb}{true}\PYG{p}{;}
+        \PYG{n}{prev}\PYG{p}{[}\PYG{n}{p}\PYG{p}{.}\PYG{n}{second}\PYG{p}{]} \PYG{o}{=} \PYG{n}{p}\PYG{p}{.}\PYG{n}{first}\PYG{p}{.}\PYG{n}{second}\PYG{p}{;} \PYG{c+c1}{//из второй в первую}
+        \PYG{k+kt}{int} \PYG{n}{x} \PYG{o}{=} \PYG{n}{par}\PYG{p}{[}\PYG{n}{p}\PYG{p}{.}\PYG{n}{second}\PYG{p}{];}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{x} \PYG{o}{==} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)\PYGZob{}}
+            \PYG{n}{pos} \PYG{o}{=} \PYG{n}{p}\PYG{p}{.}\PYG{n}{second}\PYG{p}{;}
+            \PYG{k}{break}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{n}{useda}\PYG{p}{[}\PYG{n}{x}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb}{true}\PYG{p}{;}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{n}{j}\PYG{o}{++}\PYG{p}{)}
+            \PYG{n}{w}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{n}{min}\PYG{p}{(}\PYG{n}{w}\PYG{p}{[}\PYG{n}{j}\PYG{p}{],} \PYG{p}{\PYGZob{}}\PYG{n}{a}\PYG{p}{[}\PYG{n}{x}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]} \PYG{o}{+} \PYG{n}{row}\PYG{p}{[}\PYG{n}{x}\PYG{p}{]} \PYG{o}{+} \PYG{n}{col}\PYG{p}{[}\PYG{n}{j}\PYG{p}{],} \PYG{n}{x}\PYG{p}{\PYGZcb{});}
+
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{while} \PYG{p}{(}\PYG{n}{pos} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)\PYGZob{}}
+        \PYG{k+kt}{int} \PYG{n}{nxt} \PYG{o}{=} \PYG{n}{par2}\PYG{p}{[}\PYG{n}{prev}\PYG{p}{[}\PYG{n}{pos}\PYG{p}{]];}
+        \PYG{n}{par}\PYG{p}{[}\PYG{n}{pos}\PYG{p}{]} \PYG{o}{=} \PYG{n}{prev}\PYG{p}{[}\PYG{n}{pos}\PYG{p}{];}
+        \PYG{n}{par2}\PYG{p}{[}\PYG{n}{prev}\PYG{p}{[}\PYG{n}{pos}\PYG{p}{]]} \PYG{o}{=} \PYG{n}{pos}\PYG{p}{;}
+        \PYG{n}{pos} \PYG{o}{=} \PYG{n}{nxt}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{ans} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{;}
+\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+    \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{par}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{+} \PYG{l+m+mi}{1} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{} \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{i} \PYG{o}{+} \PYG{l+m+mi}{1} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{;}
+\end{Verbatim}

@@ -1,0 +1,52 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{struct} \PYG{n}{treap}\PYG{p}{\PYGZob{}}
+    \PYG{n}{map}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{char}\PYG{p}{,} \PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{go}\PYG{p}{;}
+    \PYG{k+kt}{int} \PYG{n}{len}\PYG{p}{,} \PYG{n}{suff}\PYG{p}{;}
+    \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{sum\PYGZus{}in}\PYG{p}{;}
+    \PYG{n}{treap}\PYG{p}{()\PYGZob{}\PYGZcb{}}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{n}{treap} \PYG{n}{v}\PYG{p}{[}\PYG{n}{max\PYGZus{}n} \PYG{o}{*} \PYG{l+m+mi}{4}\PYG{p}{];}
+\PYG{k+kt}{int} \PYG{n}{last} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+
+\PYG{k+kt}{int} \PYG{n+nf}{add\PYGZus{}treap}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{max\PYGZus{}len}\PYG{p}{)\PYGZob{}}
+    \PYG{n}{v}\PYG{p}{[}\PYG{n}{number}\PYG{p}{].}\PYG{n}{sum\PYGZus{}in} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{n}{v}\PYG{p}{[}\PYG{n}{number}\PYG{p}{].}\PYG{n}{len} \PYG{o}{=} \PYG{n}{max\PYGZus{}len}\PYG{p}{;}
+    \PYG{n}{v}\PYG{p}{[}\PYG{n}{number}\PYG{p}{].}\PYG{n}{suff} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{n}{number}\PYG{o}{++}\PYG{p}{;}
+    \PYG{k}{return} \PYG{n}{number} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void} \PYG{n+nf}{add\PYGZus{}char}\PYG{p}{(}\PYG{k+kt}{char} \PYG{n}{c}\PYG{p}{)\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{cur} \PYG{o}{=} \PYG{n}{last}\PYG{p}{;}
+    \PYG{k+kt}{int} \PYG{n}{new\PYGZus{}treap} \PYG{o}{=} \PYG{n}{add\PYGZus{}treap}\PYG{p}{(}\PYG{n}{v}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{].}\PYG{n}{len} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{);}
+    \PYG{n}{last} \PYG{o}{=} \PYG{n}{new\PYGZus{}treap}\PYG{p}{;}
+    \PYG{k}{while} \PYG{p}{(}\PYG{n}{cur} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)\PYGZob{}}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{v}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{].}\PYG{n}{go}\PYG{p}{.}\PYG{n}{count}\PYG{p}{(}\PYG{n}{c}\PYG{p}{)} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{)\PYGZob{}}
+            \PYG{n}{v}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{].}\PYG{n}{go}\PYG{p}{[}\PYG{n}{c}\PYG{p}{]} \PYG{o}{=} \PYG{n}{new\PYGZus{}treap}\PYG{p}{;}
+            \PYG{n}{v}\PYG{p}{[}\PYG{n}{new\PYGZus{}treap}\PYG{p}{].}\PYG{n}{sum\PYGZus{}in} \PYG{o}{+=} \PYG{n}{v}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{].}\PYG{n}{sum\PYGZus{}in}\PYG{p}{;}
+            \PYG{n}{cur} \PYG{o}{=} \PYG{n}{v}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{].}\PYG{n}{suff}\PYG{p}{;}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{cur} \PYG{o}{==} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}
+                \PYG{n}{v}\PYG{p}{[}\PYG{n}{new\PYGZus{}treap}\PYG{p}{].}\PYG{n}{suff} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}\PYG{k}{else}\PYG{p}{\PYGZob{}}
+            \PYG{k+kt}{int} \PYG{n}{a} \PYG{o}{=} \PYG{n}{v}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{].}\PYG{n}{go}\PYG{p}{[}\PYG{n}{c}\PYG{p}{];}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{v}\PYG{p}{[}\PYG{n}{a}\PYG{p}{].}\PYG{n}{len} \PYG{o}{==} \PYG{n}{v}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{].}\PYG{n}{len} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{)\PYGZob{}}
+                \PYG{n}{v}\PYG{p}{[}\PYG{n}{new\PYGZus{}treap}\PYG{p}{].}\PYG{n}{suff} \PYG{o}{=} \PYG{n}{a}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}\PYG{k}{else}\PYG{p}{\PYGZob{}}
+                \PYG{k+kt}{int} \PYG{n}{b} \PYG{o}{=} \PYG{n}{add\PYGZus{}treap}\PYG{p}{(}\PYG{n}{v}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{].}\PYG{n}{len} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{);}
+                \PYG{n}{v}\PYG{p}{[}\PYG{n}{b}\PYG{p}{].}\PYG{n}{go} \PYG{o}{=} \PYG{n}{v}\PYG{p}{[}\PYG{n}{a}\PYG{p}{].}\PYG{n}{go}\PYG{p}{;}
+                \PYG{n}{v}\PYG{p}{[}\PYG{n}{b}\PYG{p}{].}\PYG{n}{suff} \PYG{o}{=} \PYG{n}{v}\PYG{p}{[}\PYG{n}{a}\PYG{p}{].}\PYG{n}{suff}\PYG{p}{;}
+                \PYG{n}{v}\PYG{p}{[}\PYG{n}{new\PYGZus{}treap}\PYG{p}{].}\PYG{n}{suff} \PYG{o}{=} \PYG{n}{b}\PYG{p}{;}
+                \PYG{k}{while} \PYG{p}{(}\PYG{n}{cur} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{v}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{].}\PYG{n}{go}\PYG{p}{.}\PYG{n}{count}\PYG{p}{(}\PYG{n}{c}\PYG{p}{)} \PYG{o}{!=} \PYG{l+m+mi}{0} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{v}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{].}\PYG{n}{go}\PYG{p}{[}\PYG{n}{c}\PYG{p}{]} \PYG{o}{==} \PYG{n}{a}\PYG{p}{)\PYGZob{}}
+                    \PYG{n}{v}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{].}\PYG{n}{go}\PYG{p}{[}\PYG{n}{c}\PYG{p}{]} \PYG{o}{=} \PYG{n}{b}\PYG{p}{;}
+                    \PYG{n}{v}\PYG{p}{[}\PYG{n}{a}\PYG{p}{].}\PYG{n}{sum\PYGZus{}in} \PYG{o}{\PYGZhy{}=} \PYG{n}{v}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{].}\PYG{n}{sum\PYGZus{}in}\PYG{p}{;}
+                    \PYG{n}{v}\PYG{p}{[}\PYG{n}{b}\PYG{p}{].}\PYG{n}{sum\PYGZus{}in} \PYG{o}{+=} \PYG{n}{v}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{].}\PYG{n}{sum\PYGZus{}in}\PYG{p}{;}
+                    \PYG{n}{cur} \PYG{o}{=} \PYG{n}{v}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{].}\PYG{n}{suff}\PYG{p}{;}
+                \PYG{p}{\PYGZcb{}}
+                \PYG{n}{v}\PYG{p}{[}\PYG{n}{a}\PYG{p}{].}\PYG{n}{suff} \PYG{o}{=} \PYG{n}{b}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}
+            \PYG{k}{return}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
